@@ -1,7 +1,75 @@
 package entities;
-
+import java.time.LocalDateTime;
 // Definicion de TODO: (TODO = to do (hacer))
 
 public class Producto extends Base{
     //TODO: escribir los atributos de la clase, usar super en el constructor para pasarle los parametros a base y NO usar smart setters
+    private String nombre;
+    private Double precio;
+    private String Descripcion;
+    private int stock;
+    private String imagen;
+    private boolean disponible;
+
+    //relacion N:1 con Categoria
+    private Categoria categoria;
+
+    //constructor
+    public Producto() {
+        super();
+    }
+    public Producto(long id, boolean eliminado, LocalDateTime createAt, String nombne, Double precio, String Descripcion, int stock, String imagen, boolean disponible, Categoria categoria) {
+        super(id, eliminado, createAt);
+        this.nombre = nombne;
+        this.precio = precio;
+        this.Descripcion = Descripcion;
+        this.stock = stock;
+        this.imagen = imagen;
+        this.disponible = disponible;
+        this.categoria = categoria;
+    }
+
+    //getter and setter
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public Double getPrecio() {
+        return precio;
+    }
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+    public String getDescripcion() {
+        return Descripcion;
+    }
+    public void setDescripcion(String descripcion) {
+        Descripcion = descripcion;
+    }
+    public int getStock() {
+        return stock;
+    }
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+    public String getImagen() {
+        return imagen;
+    }
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    public boolean isDisponible() {
+        return disponible;
+    }
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+    public Categoria getCategoria() {
+        return categoria;
+    }
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 }
