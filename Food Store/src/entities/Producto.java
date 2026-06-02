@@ -10,16 +10,14 @@ public class Producto extends Base{
     private int stock;
     private String imagen;
     private boolean disponible;
+    private Categoria categoria; //relacion N:1 con Categoria
 
-    //relacion N:1 con Categoria
-    private Categoria categoria;
-
-    //constructor
+    //  CONSTRUCTORES
     public Producto() {
         super();
     }
-    public Producto(long id, boolean eliminado, LocalDateTime createAt, String nombne, Double precio, String Descripcion, int stock, String imagen, boolean disponible, Categoria categoria) {
-        super(id, eliminado, createAt);
+    public Producto(boolean eliminado, String nombne, Double precio, String Descripcion, int stock, String imagen, boolean disponible, Categoria categoria) {
+        super(eliminado);
         this.nombre = nombne;
         this.precio = precio;
         this.Descripcion = Descripcion;
@@ -29,43 +27,49 @@ public class Producto extends Base{
         this.categoria = categoria;
     }
 
-    //getter and setter
+    //  GETTERS Y SETTERS
     public String getNombre() {
         return nombre;
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public Double getPrecio() {
         return precio;
     }
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
+
     public String getDescripcion() {
         return Descripcion;
     }
     public void setDescripcion(String descripcion) {
         Descripcion = descripcion;
     }
+
     public int getStock() {
         return stock;
     }
     public void setStock(int stock) {
         this.stock = stock;
     }
+
     public String getImagen() {
         return imagen;
     }
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
     public boolean isDisponible() {
         return disponible;
     }
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+
     public Categoria getCategoria() {
         return categoria;
     }

@@ -6,24 +6,23 @@ import java.time.LocalDateTime;
 
 public abstract class Base {
     protected Long id;
+    protected static Long contador;
     protected boolean eliminado;
     protected LocalDateTime createdAt;
 
     // CONSTRUCTORES
     public Base() {
     }
-    public Base(Long id, boolean eliminado, LocalDateTime createdAt) {
-        setId(id);
+    public Base(boolean eliminado) {
+        contador ++;
+        this.id = contador;
         setEliminado(eliminado);
-        setCreatedAt(createdAt);
+        this.createdAt = LocalDateTime.now();
     }
 
-    // METODOS
+    // GETTERS Y SETTERS
     public Long getId() {
         return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public boolean isEliminado() {
@@ -35,8 +34,5 @@ public abstract class Base {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
-    }
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 }

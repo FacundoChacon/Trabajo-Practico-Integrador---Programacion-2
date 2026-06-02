@@ -14,13 +14,14 @@ public class Usuario extends Base{
     private String contraseña;
     private Rol rol;
 
+
+    //  CONSTRUCTORES
     public Usuario() {
         super();
     }
-    // Este constructor sirve para crear un usuario nuevo desde el menú
-    public Usuario(Long id, String nombre, String apellido, String mail, String celular, String contraseña, Rol rol) {
-        // id y eliminado (false por defecto) heredan de la clase Base
-        super(id, false, LocalDateTime.now());
+
+    public Usuario(boolean eliminado, String nombre, String apellido, String mail, String celular, String contraseña, Rol rol) {
+        super(eliminado);
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
@@ -29,12 +30,11 @@ public class Usuario extends Base{
         this.rol = rol;
     }
 
-    //Getters y Setters
+    //  GETTERS Y SETTERS
 
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -42,7 +42,6 @@ public class Usuario extends Base{
     public String getApellido() {
         return apellido;
     }
-
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
@@ -50,7 +49,6 @@ public class Usuario extends Base{
     public String getMail() {
         return mail;
     }
-
     public void setMail(String mail) {
         this.mail = mail;
     }
@@ -58,7 +56,6 @@ public class Usuario extends Base{
     public String getCelular() {
         return celular;
     }
-
     public void setCelular(String celular) {
         this.celular = celular;
     }
@@ -66,7 +63,6 @@ public class Usuario extends Base{
     public String getContraseña() {
         return contraseña;
     }
-
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
@@ -74,7 +70,6 @@ public class Usuario extends Base{
     public Rol getRol() {
         return rol;
     }
-
     public void setRol(Rol rol) {
         this.rol = rol;
     }
@@ -82,7 +77,8 @@ public class Usuario extends Base{
     @Override
     public String toString() {
         return "Usuario{" +
-                "nombre='" + nombre + '\'' +
+                "id=" + id + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", mail='" + mail + '\'' +
                 ", celular='" + celular + '\'' +
