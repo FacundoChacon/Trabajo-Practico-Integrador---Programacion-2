@@ -77,13 +77,14 @@ public class Usuario extends Base{
     @Override
     public String toString() {
         return "Usuario{" +
-                "id=" + id + '\'' +
+                "id=" + getId() +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", mail='" + mail + '\'' +
                 ", celular='" + celular + '\'' +
-                ", contraseña='" + contraseña + '\'' +
                 ", rol=" + rol +
+                ", eliminado=" + isEliminado() +
+                ", createdAt=" + getCreatedAt() +
                 '}';
     }
 
