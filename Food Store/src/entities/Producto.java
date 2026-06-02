@@ -16,15 +16,14 @@ public class Producto extends Base{
     public Producto() {
         super();
     }
-    public Producto(boolean eliminado, String nombne, Double precio, String Descripcion, int stock, String imagen, boolean disponible, Categoria categoria) {
+    public Producto(boolean eliminado, String nombne, Double precio, String descripcion, int stock, String imagen, Categoria categoria) {
         super(eliminado);
-        this.nombre = nombne;
-        this.precio = precio;
-        this.Descripcion = Descripcion;
-        this.stock = stock;
-        this.imagen = imagen;
-        this.disponible = disponible;
-        this.categoria = categoria;
+        setNombre(nombne);
+        setPrecio(precio);
+        setDescripcion(descripcion);
+        setStock(stock);
+        setImagen(imagen);
+        setCategoria(categoria);
     }
 
     //  GETTERS Y SETTERS
@@ -65,9 +64,6 @@ public class Producto extends Base{
 
     public boolean isDisponible() {
         return disponible;
-    }
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
     }
 
     public Categoria getCategoria() {

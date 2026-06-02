@@ -22,12 +22,12 @@ public class Usuario extends Base{
 
     public Usuario(boolean eliminado, String nombre, String apellido, String mail, String celular, String contraseña, Rol rol) {
         super(eliminado);
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.mail = mail;
-        this.celular = celular;
-        this.contraseña = contraseña;
-        this.rol = rol;
+        setNombre(nombre);
+        setApellido(apellido);
+        setMail(mail);
+        setCelular(celular);
+        setContraseña(contraseña);
+        setRol(rol);
     }
 
     //  GETTERS Y SETTERS
