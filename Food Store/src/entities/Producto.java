@@ -6,7 +6,7 @@ public class Producto extends Base{
     //TODO: escribir los atributos de la clase, usar super en el constructor para pasarle los parametros a base y NO usar smart setters
     private String nombre;
     private Double precio;
-    private String Descripcion;
+    private String descripcion;
     private int stock;
     private String imagen;
     private boolean disponible;
@@ -16,13 +16,14 @@ public class Producto extends Base{
     public Producto() {
         super();
     }
-    public Producto(boolean eliminado, String nombne, Double precio, String descripcion, int stock, String imagen, Categoria categoria) {
+    public Producto(boolean eliminado, String nombre, Double precio, String descripcion, int stock, String imagen,boolean disponible, Categoria categoria) {
         super(eliminado);
-        setNombre(nombne);
+        setNombre(nombre);
         setPrecio(precio);
         setDescripcion(descripcion);
         setStock(stock);
         setImagen(imagen);
+        setDisponible(disponible);
         setCategoria(categoria);
     }
 
@@ -34,18 +35,16 @@ public class Producto extends Base{
         this.nombre = nombre;
     }
 
-    public Double getPrecio() {
-        return precio;
-    }
+    public Double getPrecio() {return precio;}
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
     public void setDescripcion(String descripcion) {
-        Descripcion = descripcion;
+        descripcion = descripcion;
     }
 
     public int getStock() {
@@ -65,6 +64,7 @@ public class Producto extends Base{
     public boolean isDisponible() {
         return disponible;
     }
+    public void setDisponible(boolean disponible) {this.disponible = disponible;}
 
     public Categoria getCategoria() {
         return categoria;
@@ -72,4 +72,5 @@ public class Producto extends Base{
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
 }
