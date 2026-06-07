@@ -1,7 +1,5 @@
 package entities;
 
-import java.time.LocalDateTime;
-
 // Definicion de TODO: (TODO = to do (hacer))
 
 public class DetallePedido extends Base{
@@ -31,7 +29,7 @@ public class DetallePedido extends Base{
 
     // Constructores
 
-    public DetallePedido() {
+    public DetallePedido(int cantidad, Producto producto) {
         super();
     }
 
