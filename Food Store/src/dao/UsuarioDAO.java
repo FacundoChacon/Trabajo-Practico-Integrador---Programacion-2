@@ -5,6 +5,8 @@ import entities.Usuario;
 import java.util.List;
 
 public class UsuarioDAO implements DAO <Usuario>{
+
+
     @Override
     public List<Usuario> listar() {
         return List.of();
@@ -16,24 +18,22 @@ public class UsuarioDAO implements DAO <Usuario>{
     }
 
     @Override
-    public void editar(int id) {
+    public void editar(long id) {
 
     }
 
     @Override
-    public void eliminar(int id) {
+    public void eliminar(long id) {
 
     }
 
     @Override
-    public Usuario buscarPorId(int id) {
+    public Usuario buscarPorId(long id) {
         return null;
     }
 
     @Override
-    public void actualizar(Usuario usuario) {
+    public void actualizar(Usuario entidad) {
 
     }
-
-
 }

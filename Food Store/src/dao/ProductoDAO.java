@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ProductoDAO implements DAO<Producto> {
 
+
     @Override
     public List<Producto> listar() {
         return List.of();
@@ -16,17 +17,17 @@ public class ProductoDAO implements DAO<Producto> {
     }
 
     @Override
-    public void editar(Long id) {
+    public void editar(long id) {
 
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminar(long id) {
 
     }
 
     @Override
-    public Producto buscarPorId(Long id) {
+    public Producto buscarPorId(long id) {
         return null;
     }
 
