@@ -1,7 +1,6 @@
 package service;
 
 import entities.Usuario;
-
 import java.util.List;
 
 public interface UsuarioService {

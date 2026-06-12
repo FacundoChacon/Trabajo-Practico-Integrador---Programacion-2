@@ -21,7 +21,7 @@ public class Usuario extends Base{
     }
 
     public Usuario(boolean eliminado, String nombre, String apellido, String mail, String celular, String contraseña, Rol rol) {
-        super(eliminado);
+        super();
         setNombre(nombre);
         setApellido(apellido);
         setMail(mail);
