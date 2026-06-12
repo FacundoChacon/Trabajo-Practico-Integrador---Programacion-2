@@ -1,5 +1,6 @@
 package dao;
 
+import config.ConexionDB;
 import entities.Usuario;
 import enums.Rol;
 import java.sql.*;

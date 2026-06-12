@@ -1,5 +1,6 @@
 package dao;
 
+import config.ConexionDB;
 import entities.Categoria;
 import entities.Producto;
 import java.sql.*;

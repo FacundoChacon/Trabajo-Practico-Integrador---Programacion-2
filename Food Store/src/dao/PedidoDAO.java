@@ -1,8 +1,8 @@
 package dao;
 
+import config.ConexionDB;
 import entities.Pedido;
 import entities.DetallePedido;
-import entities.Producto;
 import entities.Usuario;
 import enums.Estado;
 import enums.FormaPago;
