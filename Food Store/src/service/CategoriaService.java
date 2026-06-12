@@ -9,3 +9,4 @@ public interface CategoriaService {
     void editar(Long id, Categoria categoria);
     void eliminar(Long id);
 }
+

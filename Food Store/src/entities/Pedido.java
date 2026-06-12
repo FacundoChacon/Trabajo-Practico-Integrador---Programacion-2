@@ -1,74 +1,57 @@
 package entities;
 
 import dao.Calculable;
-
+import enums.Estado;
+import enums.FormaPago;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import enums.Estado;
-import enums.FormaPago;
-import dao.Calculable;
-
-// Definicion de TODO: (TODO = to do (hacer))
-// TODO: ARREGLA ESTO
 public class Pedido extends Base implements Calculable {
-
     private LocalDate fecha;
     private Estado estado;
-    private Double total;
+    private Double total = 0.0;
     private FormaPago formaPago;
-    private Usuario usuario; // Relación con Usuario según UML
-    private List<DetallePedido> detallesPedido; // Relación 1..m con DetallePedido
+    private Usuario usuario;
+    private List<DetallePedido> detallesPedido = new ArrayList<>();
 
-    // CONSTRUCTORES
     public Pedido() {
         super();
-        this.detallesPedido = new ArrayList<>();
-        this.total = 0.0;
-    }
-
-    public Pedido(Usuario usuario, FormaPago formaPago) {
-        super(false); // Gestiona ID y createdAt en Base
-        if (usuario == null) {
-            throw new IllegalArgumentException("No se permite crear un Pedido sin usuario."); //
-        }
         this.fecha = LocalDate.now();
-        this.estado = Estado.PENDIENTE; // Estado inicial por defecto
-        this.formaPago = formaPago;
-        this.usuario = usuario;
-        this.detallesPedido = new ArrayList<>();
-        this.total = 0.0;
-    }
-
-    public void addDetallePedido(int cantidad, Producto producto) {
-        // La validación de cantidad > 0 ya se realiza en el constructor de DetallePedido
-        DetallePedido nuevoDetalle = new DetallePedido(cantidad, producto);
-        this.detallesPedido.add(nuevoDetalle);
-        calcularTotal();
-    }
-
-    public DetallePedido findeDetallePedidoByProducto(Producto producto) {
-        return detallesPedido.stream()
-                .filter(d -> d.getProducto().equals(producto))
-                .findFirst()
-                .orElse(null);
-    }
-
-    public void deleteDetallePedidoByProducto(Producto producto) {
-        DetallePedido detalle = findeDetallePedidoByProducto(producto);
-        if (detalle != null) {
-            detallesPedido.remove(detalle);
-            calcularTotal();
-        }
+        this.estado = Estado.PENDIENTE;
     }
 
     @Override
     public void calcularTotal() {
-        //TODO: Modificar el metodo segun lo que pide la rubrica
-        this.total = detallesPedido.stream()
-                .filter(d -> !d.isEliminado())
-                .mapToDouble(DetallePedido::getSubtotal)
-                .sum();
+        this.total = 0.0;
+        if (this.detallesPedido != null) {
+            for (DetallePedido detalle : this.detallesPedido) {
+                if (detalle != null && detalle.getSubtotal() != null) {
+                    this.total += detalle.getSubtotal();
+                }
+            }
         }
     }
+
+    // Getters y Setters
+    public LocalDate getFecha() { return fecha; }
+    public void setFecha(LocalDate fecha) { this.fecha = fecha; }
+
+    public Estado getEstado() { return estado; }
+    public void setEstado(Estado estado) { this.estado = estado; }
+
+    public Double getTotal() { return total; }
+    public void setTotal(Double total) { this.total = total; }
+
+    public FormaPago getFormaPago() { return formaPago; }
+    public void setFormaPago(FormaPago formaPago) { this.formaPago = formaPago; }
+
+    public Usuario getUsuario() { return usuario; }
+    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+
+    public List<DetallePedido> getDetallesPedido() { return detallesPedido; }
+    public void setDetallesPedido(List<DetallePedido> detallesPedido) {
+        this.detallesPedido = detallesPedido;
+        this.calcularTotal();
+    }
+}
