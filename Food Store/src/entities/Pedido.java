@@ -11,9 +11,8 @@ import enums.FormaPago;
 import dao.Calculable;
 
 // Definicion de TODO: (TODO = to do (hacer))
-
+// TODO: ARREGLA ESTO
 public class Pedido extends Base implements Calculable {
-    //TODO: escribir los atributos de la clase, usar super en el constructor para pasarle los parametros a base y NO usar smart setters
 
     private LocalDate fecha;
     private Estado estado;
