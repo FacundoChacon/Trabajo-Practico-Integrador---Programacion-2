@@ -5,11 +5,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionDB {
-    private static final String URL = "jdbc:mysql://localhost:3306/food_store_db";
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
-
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("No se encontró la clase del Driver de MySQL en el Classpath", e);
+        }
+
+        String url = "jdbc:mysql://localhost:3306/food_store_db";
+        String user = "root";
+        String pass = "";
+
+        return DriverManager.getConnection(url, user, pass);
     }
 }
