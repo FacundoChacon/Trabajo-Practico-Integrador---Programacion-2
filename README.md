@@ -2,7 +2,7 @@
 
 # Food Store - Sistema de Gestión de Pedidos (Consola)
 
-## Aplicación de consola desarrollada en Java orientada a la gestión integral de un negocio de comidas. Implementa Programación Orientada a Objetos (POO) y una arquitectura multicapas conectada a una base de datos relacional mediante JDBC.
+Aplicación de consola desarrollada en Java orientada a la gestión integral de un negocio de comidas. Implementa Programación Orientada a Objetos (POO) y una arquitectura multicapas conectada a una base de datos relacional mediante JDBC.
 
 ## Características (Features)
 
