@@ -1,0 +1,14 @@
+package com.utn.service;
+
+
+
+import com.utn.entities.Usuario;
+
+import java.util.List;
+
+public interface UsuarioService {
+    List<Usuario> listar();
+    void crear(Usuario usuario, String mail);
+    void editar(int id, Usuario usuario);
+    void eliminar(int id);
+}
