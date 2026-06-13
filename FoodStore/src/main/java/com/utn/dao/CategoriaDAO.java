@@ -14,7 +14,7 @@ public class CategoriaDAO implements DAO<Categoria> {
     @Override
     public List<Categoria> listar() {
         List<Categoria> categorias = new ArrayList<>();
-        String sql = "SELECT * FROM categorias WHERE eliminado = false";
+        String sql = "SELECT * FROM categoria WHERE eliminado = false";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -33,7 +33,7 @@ public class CategoriaDAO implements DAO<Categoria> {
     }
 
     public boolean existeNombre(String nombre) {
-        String sql = "SELECT COUNT(*) FROM categorias WHERE nombre = ? AND eliminado = false";
+        String sql = "SELECT COUNT(*) FROM categoria WHERE nombre = ? AND eliminado = false";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, nombre);
@@ -48,7 +48,7 @@ public class CategoriaDAO implements DAO<Categoria> {
 
     @Override
     public void crear(Categoria c) {
-        String sql = "INSERT INTO categorias (nombre, descripcion, eliminado, created_at) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO categoria (nombre, descripcion, eliminado, created_at) VALUES (?, ?, ?, ?)";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, c.getNombre());
@@ -66,7 +66,7 @@ public class CategoriaDAO implements DAO<Categoria> {
 
     @Override
     public void actualizar(Categoria c) {
-        String sql = "UPDATE categorias SET nombre = ?, descripcion = ?, eliminado = ? WHERE id = ?";
+        String sql = "UPDATE categoria SET nombre = ?, descripcion = ?, eliminado = ? WHERE id = ?";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, c.getNombre());
@@ -84,7 +84,7 @@ public class CategoriaDAO implements DAO<Categoria> {
 
     @Override
     public Categoria buscarPorId(long id) {
-        String sql = "SELECT * FROM categorias WHERE id = ? AND eliminado = false";
+        String sql = "SELECT * FROM categoria WHERE id = ? AND eliminado = false";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setLong(1, id);

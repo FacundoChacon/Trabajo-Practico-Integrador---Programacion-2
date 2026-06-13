@@ -15,7 +15,7 @@ public class ProductoDAO implements DAO<Producto> {
     public List<Producto> listar() {
         List<Producto> productos = new ArrayList<>();
         String sql = "SELECT p.*, c.nombre as cat_nombre, c.descripcion as cat_desc " +
-                "FROM productos p INNER JOIN categorias c ON p.categoria_id = c.id WHERE p.eliminado = false";
+                "FROM producto p INNER JOIN categoria c ON p.categoria_id = c.id WHERE p.eliminado = false";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -46,7 +46,7 @@ public class ProductoDAO implements DAO<Producto> {
 
     @Override
     public void crear(Producto p) {
-        String sql = "INSERT INTO productos (nombre, precio, descripcion, stock, imagen, disponible, categoria_id, eliminado, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO producto (nombre, precio, descripcion, stock, imagen, disponible, categoria_id, eliminado, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, p.getNombre());
@@ -69,7 +69,7 @@ public class ProductoDAO implements DAO<Producto> {
 
     @Override
     public void actualizar(Producto p) {
-        String sql = "UPDATE productos SET nombre=?, precio=?, descripcion=?, stock=?, imagen=?, disponible=?, categoria_id=?, eliminado=? WHERE id=?";
+        String sql = "UPDATE producto SET nombre=?, precio=?, descripcion=?, stock=?, imagen=?, disponible=?, categoria_id=?, eliminado=? WHERE id=?";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, p.getNombre());
@@ -93,7 +93,7 @@ public class ProductoDAO implements DAO<Producto> {
     @Override
     public Producto buscarPorId(long id) {
         String sql = "SELECT p.*, c.nombre as cat_nombre, c.descripcion as cat_desc " +
-                "FROM productos p INNER JOIN categorias c ON p.categoria_id = c.id WHERE p.id = ? AND p.eliminado = false";
+                "FROM producto p INNER JOIN categoria c ON p.categoria_id = c.id WHERE p.id = ? AND p.eliminado = false";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setLong(1, id);

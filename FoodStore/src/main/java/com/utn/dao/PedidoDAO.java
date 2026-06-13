@@ -18,7 +18,7 @@ public class PedidoDAO implements DAO<Pedido> {
     @Override
     public List<Pedido> listar() {
         List<Pedido> pedidos = new ArrayList<>();
-        String sql = "SELECT p.*, u.nombre, u.apellido FROM pedidos p INNER JOIN usuarios u ON p.usuario_id = u.id WHERE p.eliminado = false";
+        String sql = "SELECT p.*, u.nombre, u.apellido FROM pedido p INNER JOIN usuario u ON p.usuario_id = u.id WHERE p.eliminado = false";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -46,8 +46,8 @@ public class PedidoDAO implements DAO<Pedido> {
 
     @Override
     public void crear(Pedido p) {
-        String insertPedido = "INSERT INTO pedidos (fecha, estado, total, forma_pago, usuario_id, eliminado, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        String insertDetalle = "INSERT INTO detalles_pedido (cantidad, subtotal, producto_id, pedido_id, eliminado, created_at) VALUES (?, ?, ?, ?, ?, ?)";
+        String insertPedido = "INSERT INTO pedido (fecha, estado, total, forma_pago, usuario_id, eliminado, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String insertDetalle = "INSERT INTO detalle_pedido (cantidad, subtotal, producto_id, pedido_id, eliminado, created_at) VALUES (?, ?, ?, ?, ?, ?)";
 
         Connection conn = null;
         try {
@@ -96,7 +96,7 @@ public class PedidoDAO implements DAO<Pedido> {
 
     @Override
     public void actualizar(Pedido p) {
-        String sql = "UPDATE pedidos SET estado = ?, forma_pago = ?, eliminado = ? WHERE id = ?";
+        String sql = "UPDATE pedido SET estado = ?, forma_pago = ?, eliminado = ? WHERE id = ?";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, p.getEstado().name());
@@ -114,7 +114,7 @@ public class PedidoDAO implements DAO<Pedido> {
 
     @Override
     public Pedido buscarPorId(long id) {
-        String sql = "SELECT * FROM pedidos WHERE id = ? AND eliminado = false";
+        String sql = "SELECT * FROM pedido WHERE id = ? AND eliminado = false";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setLong(1, id);

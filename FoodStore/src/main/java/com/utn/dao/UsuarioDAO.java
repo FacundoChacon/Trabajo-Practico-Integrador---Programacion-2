@@ -15,7 +15,7 @@ public class UsuarioDAO implements DAO<Usuario> {
     @Override
     public List<Usuario> listar() {
         List<Usuario> usuarios = new ArrayList<>();
-        String sql = "SELECT * FROM usuarios WHERE eliminado = false";
+        String sql = "SELECT * FROM usuario WHERE eliminado = false";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -27,9 +27,9 @@ public class UsuarioDAO implements DAO<Usuario> {
                 u.setApellido(rs.getString("apellido"));
                 u.setMail(rs.getString("mail"));
                 u.setCelular(rs.getString("celular"));
-                u.setContraseña(rs.getString("contraseña"));
+                u.setContraseña(rs.getString("contrasenia"));
                 u.setRol(Rol.valueOf(rs.getString("rol")));
-                u.setEliminado(rs.getBoolean("eliminated"));
+                u.setEliminado(rs.getBoolean("eliminado"));
                 usuarios.add(u);
             }
         } catch (SQLException e) {
@@ -53,7 +53,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 
     @Override
     public void crear(Usuario u) {
-        String sql = "INSERT INTO usuarios (nombre, apellido, mail, celular, contraseña, rol, eliminado, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuario (nombre, apellido, mail, celular, contrasenia, rol, eliminado, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, u.getNombre());
@@ -78,7 +78,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 
     @Override
     public void actualizar(Usuario u) {
-        String sql = "UPDATE usuarios SET nombre=?, apellido=?, mail=?, celular=?, contraseña=?, rol=?, eliminado=? WHERE id=?";
+        String sql = "UPDATE usuario SET nombre=?, apellido=?, mail=?, celular=?, contrasenia=?, rol=?, eliminado=? WHERE id=?";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, u.getNombre());
@@ -100,7 +100,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 
     @Override
     public Usuario buscarPorId(long id) {
-        String sql = "SELECT * FROM usuarios WHERE id = ?";
+        String sql = "SELECT * FROM usuario WHERE id = ?";
         try (Connection conn = ConexionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setLong(1, id);
@@ -112,7 +112,7 @@ public class UsuarioDAO implements DAO<Usuario> {
                     u.setApellido(rs.getString("apellido"));
                     u.setMail(rs.getString("mail"));
                     u.setCelular(rs.getString("celular"));
-                    u.setContraseña(rs.getString("contraseña"));
+                    u.setContraseña(rs.getString("contrasenia"));
                     u.setRol(Rol.valueOf(rs.getString("rol")));
                     u.setEliminado(rs.getBoolean("eliminado"));
                     return u;
