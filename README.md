@@ -28,7 +28,7 @@ Sigue estos pasos exactos para inicializar el proyecto desde cero:
 
 **1. Clonar el repositorio**
 Abre tu terminal y ejecuta:
-`git clone <>`
+`git clone <https://github.com/FacundoChacon/Trabajo-Practico-Integrador---Programacion-2/tree/main>`
 
 **2. Preparar la Base de Datos**
 Abre tu gestor de MySQL (como MySQL Workbench o phpMyAdmin) y ejecuta los scripts ubicados en la raíz del proyecto en el siguiente orden:
