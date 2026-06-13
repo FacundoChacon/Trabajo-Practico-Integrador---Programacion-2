@@ -27,14 +27,14 @@ public class Pedido extends Base implements Calculable {
 
     @Override
     public void calcularTotal() {
-        this.total = 0.0;
+        double suma = 0.0;
         if (this.detallesPedido != null) {
             for (DetallePedido detalle : this.detallesPedido) {
-                if (detalle != null && detalle.getSubtotal() != null) {
-                    this.total += detalle.getSubtotal();
-                }
+                // Sumamos el subtotal de cada renglón del pedido
+                suma += detalle.calcularSubtotal();
             }
         }
+        this.total = suma; // Guardamos el resultado en el atributo total
     }
 
     // Getters y Setters

@@ -16,12 +16,13 @@ public class DetallePedido extends Base {
         this.calcularSubtotal(); // CALCULA EL SUBTOTAL
     }
 
-    public void calcularSubtotal() {
-        if (this.producto != null && this.producto.getPrecio() != null) {
+    public double calcularSubtotal() {
+        if (this.producto != null) {
             this.subtotal = this.cantidad * this.producto.getPrecio();
         } else {
             this.subtotal = 0.0;
         }
+        return this.subtotal;
     }
 
     // Getters y Setters

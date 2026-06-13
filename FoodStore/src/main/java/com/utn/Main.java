@@ -263,17 +263,23 @@ public class Main {
                     List<DetallePedido> carroDeCompras = new ArrayList<>();
                     String agregarMas;
 
+                    com.utn.dao.ProductoDAO prodDAO = new com.utn.dao.ProductoDAO();
+
                     do {
                         System.out.print("ID del Producto a comprar: ");
                         Long prodId = Long.parseLong(scanner.nextLine());
-                        System.out.print("Cantidad: ");
-                        int cant = Integer.parseInt(scanner.nextLine());
 
-                        Producto p = new Producto();
-                        p.setId(prodId);
+                        Producto p = prodDAO.buscarPorId(prodId);
 
-                        DetallePedido linea = new DetallePedido(cant, p);
-                        carroDeCompras.add(linea);
+                        if (p != null) {
+                            System.out.print("Cantidad: ");
+                            int cant = Integer.parseInt(scanner.nextLine());
+
+                            DetallePedido linea = new DetallePedido(cant, p);
+                            carroDeCompras.add(linea);
+                        } else {
+                            System.out.println("[ERROR] El producto con ID " + prodId + " no existe o está eliminado.");
+                        }
 
                         System.out.print("¿Desea agregar otro producto al pedido? (S/N): ");
                         agregarMas = scanner.nextLine();
