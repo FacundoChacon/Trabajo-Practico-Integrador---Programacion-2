@@ -31,6 +31,7 @@ Abre tu terminal y ejecuta:
 `git clone <https://github.com/FacundoChacon/Trabajo-Practico-Integrador---Programacion-2/tree/main>`
 
 **2. Preparar la Base de Datos**
+* Asegurarse de usar XAMMP control pannel, tenerlo ejecutando en el puerto 3306 y prender los servidores locales de Apache y MySQL
 Abre tu gestor de MySQL (como MySQL Workbench o phpMyAdmin) y ejecuta los scripts ubicados en la raíz del proyecto en el siguiente orden:
 * Ejecuta `INICIADOR_DE_DB_FOODSTORE.sql` para crear la base de datos (`food_store_db`).
 * Ejecuta `CREACION_DE_TABLAS.sql` para generar la estructura de tablas relacionales.
